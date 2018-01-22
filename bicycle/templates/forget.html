@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FreeHTML5.co" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Load css styles -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap2.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome2.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style2.css') }}" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>忘记密码</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FreeHTML5.co" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style3.css') }}" />
+	<script src="{{ url_for('static',filename='js/modernizr-2.6.2.min.js') }}"></script>
+	<style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+            color: #5a5a5a;
+        }   
+    </style>
+	</head>
+<!-- 顶部导航 -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="menu-nav" style="font-size: 25px;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+		
+        <div class="nav navbar-nav">
+            <ul class="nav navbar-nav">  
+			    <li class="active" ><a href="/"style="margin:10px;">系统主页</a></li>
+            </ul>
+        </div>
+		<button class="btn btn-lg btn-primary" style="float:right;margin:10px;" onclick="window.location.href='sign-up3.html'">注册</button>
+		<button class="btn btn-lg btn-primary" style="float:right;margin:10px;" onclick="window.location.href='index3.html'">登录</button>
+    </div>
+</div>
+	<body class="style-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-push-8">
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeInRight">
+						<h2>找回密码</h2>
+						<div class="form-group">
+							<label for="email" class="sr-only">邮箱</label>
+							<input type="email" class="form-control" id="email" placeholder="输入注册邮箱" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<p><a href="index3.html">登录</a> | <a href="sign-up3.html">注册</a></p>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="发送邮件" class="btn btn-primary">
+						</div>
+					</form>
+					<!-- END Sign In Form -->
+				</div>
+			</div>
+		</div><!-- jQuery -->
+	<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+	<!-- Bootstrap -->
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+	<!-- Placeholder -->
+	<script src="{{ url_for('static',filename='js/jquery.placeholder.min.js') }}"></script>
+	<!-- Waypoints -->
+	<script src="{{ url_for('static',filename='js/jquery.waypoints.min.js') }}"></script>
+	<!-- Main JS -->
+	<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+	<!-- jQuery -->
+	</body>
+</html>

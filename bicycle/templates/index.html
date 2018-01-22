@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+{% block main %}
+    <h3>文件上传</h3>
+    <form action="" enctype='multipart/form-data' method='POST'>
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+     </form>
+    {% if is_success %}
+        <p><font size="5" face="arial" color="red">文件上传成功</font></p>
+    {% endif %}
+    <br/>
+    <div class="btn-group" role="group" aria-label="...">
+        <a class="btn btn-default" href="{{ url_for('map1') }}">盐城自行车站点分布(一）</a>
+        <a class="btn btn-default" href="{{ url_for('route') }}">轨迹图</a>
+        <a class="btn btn-default" href="{{ url_for('lease_frequency') }}">总体借车时间频率图</a>
+    </div>
+    <ul class="question-ul">
+        {%  for q in questions %}
+            <li>
+                <div class="avatar-group">
+                    <img src="{{ url_for('static',filename='images/pic.jpg') }}" alt="" class="avatar">
+                </div>
+                <div class="question-group">
+                    <p class="question-title"><a href="{{ url_for('detail',question_id=q.id) }}">{{ q.title }} </a></p>
+                    <p class="question-content">{{  q.content }} </p>
+                    <div class="question-info">
+                        <span class="question-author">{{ q.author.username }}</span>
+                        <span class="question-time">{{ q.create_time }}</span>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

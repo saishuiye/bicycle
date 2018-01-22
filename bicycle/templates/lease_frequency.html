@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>借车时间频率分布</title>
+    <!-- 引入 echarts.js -->
+    <script src="{{ url_for('static',filename='js/echarts.min.js')}} "></script>
+	<script src="{{ url_for('static',filename='js/vintage.js')}}"></script>
+
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 900px;height:600px;"></div>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'),'vintage');
+{#alert({{ min }})#}
+{#var min = eval({{ min }})#}
+{#    alert(min)#}
+var time={{ min }}    //骑车的分钟数
+var frequency = {{ fre }}    //骑车分钟数出现的频率
+// 指定图表的配置项和数据
+var option = {
+    title: {
+        show:true,
+        text: '总体借车时间频率图',
+       // subtext:'学习ECharts就来慕课网',
+        left:'center', // 数字就是像素值 ，也可以是 center left right这种值
+        //borderColor:'black',
+        borderWidth:5,
+        textStyle:{
+            fontSize:40
+        }
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataView:{
+                show:true
+            },
+            restore:{
+                show:true
+            },
+            dataZoom:{
+                show:true
+            },
+            saveAsImage: {
+                show: true
+            },
+            magicType: {
+                type: ['line', 'bar']
+            }
+        }
+    },
+	tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['骑车分钟数']
+    },
+    xAxis: {
+        data:time,
+    },
+    yAxis: {},
+    series: [{
+
+        name: '频率',
+        type: 'line',
+        data: frequency,
+		markPoint: {
+            data: [
+                {type: 'max', name: '最大值',symbol:'diamond'},
+                {type: 'min', name: '最小值',symbol:'arrow'}
+            ]
+        },
+        markLine: {
+            data2: [
+                {type: 'average', name: '平均值'}
+            ]
+        }
+    }]
+};
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+</script>
+</body>
+</html>

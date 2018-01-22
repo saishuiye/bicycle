@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>用户主页</title>
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="{{ url_for('static',filename='css/bootstrap-theme.css') }}" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+
+    <link href="{{ url_for('static',filename='css/elegant-icons-style.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style4.css') }}" />
+    <link href="{{ url_for('static',filename='css/style-responsive.css') }}" rel="stylesheet" />
+
+
+
+    <!-- Load css styles -->
+
+
+  </head>
+  <body>
+  <!-- container section start -->
+  <section id="container" class="">
+      <!--header start-->
+      <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+            </div>
+            <!--logo start-->
+            <a href="/" class="logo">自行车分析与可视化系统</a>
+            <div class="top-nav notification-row">                
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="images/profile.jpg">
+                            </span>
+                            <span class="username">XXX</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="#"><i class="icon_profile"></i>修改密码</a>
+                            </li>
+                            
+                            <li>
+                                <a href="login.html"><i class="icon_key_alt"></i>注销</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+      </header>      
+      <!--header end-->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">                
+                  <li class="active">
+                      <a class="" href="">
+                          <i class="icon_house_alt"></i>
+                          <span>我的数据集</span>
+                      </a>
+                  </li>
+				  
+                  <li>                     
+                      <a class="" href="{{ url_for('upload') }}">
+                          <i class="icon_piechart"></i>
+                          <span>上传数据集</span>                   
+                      </a>
+                                         
+                  </li>  
+                  <li>                     
+                      <a class="" href="">
+                          <i class="icon_piechart"></i>
+                          <span>修改数据集</span>                   
+                      </a>
+                                         
+                  </li>  
+                  <li>                     
+                      <a class="" href="">
+                          <i class="icon_piechart"></i>
+                          <span>删除数据集</span>                   
+                      </a>
+                                         
+                  </li>  				  
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+		  <div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa-user-md"></i> 个人主页</h3>
+				</div>
+			</div>
+              <div class="row">
+                <!-- profile-widget -->
+                <div class="col-lg-12">
+                    <div class="profile-widget profile-widget-info">
+                          <div class="panel-body">
+                            <div class="col-lg-2 col-sm-2">
+                              <h4>XXX</h4>               
+                              <div class="follow-ava">
+                                  <img src="images/profile2.jpg" alt="">
+                              </div>
+                              <h6>普通用户</h6>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 follow-info">
+                                <p>用户XXX</p>
+                                <p>@我的邮箱</p>
+								
+                                <h6>
+                                    <span><i class="icon_clock_alt"></i>11:05 AM</span>
+                                    <span><i class="icon_calendar"></i>25.10.13</span>
+                                    <span><i class="icon_pin_alt"></i>北京</span>
+                                </h6>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+              </div>
+              <!-- page start-->
+              <div class="row">
+                 <div class="col-lg-12">
+                    <section class="panel">
+                          <header class="panel-heading tab-bg-info">
+                              <ul class="nav nav-tabs">
+                                  <li class="active">
+                                      <a data-toggle="tab" href="#recent-activity">
+                                          <i class="icon-home"></i>
+                                          操作记录
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a data-toggle="tab" href="#profile">
+                                          <i class="icon-user"></i>
+                                          我的信息
+                                      </a>
+                                  </li>
+                                  <li class="">
+                                      <a data-toggle="tab" href="#edit-profile">
+                                          <i class="icon-envelope"></i>
+                                          修改个人信息
+                                      </a>
+                                  </li>
+                              </ul>
+                          </header>
+						  
+                          <div class="panel-body">
+                              <div class="tab-content">
+                                  <div id="recent-activity" class="tab-pane active">
+                                      <div class="profile-activity">                                          
+                                          <div class="act-time">                                      
+                                              <div class="activity-body act-in">
+                                                  <span class="arrow"></span>
+                                                  <div class="text">
+                                                      
+                                                      <p class="attribution"><a href="#">XXX</a> 2017年12月24日 15:30</p>
+                                                      <p>XXX上传数据集。。。。</p>
+                                                  </div>
+												  <div class="text">
+                                                      
+                                                      <p class="attribution"><a href="#">XXX</a> 2017年12月25日 15:30</p>
+                                                      <p>XXX删除数据集。。。。</p>
+                                                  </div>
+												  <div class="text">
+                                                      
+                                                      <p class="attribution"><a href="#">XXX</a> 2017年12月26日 15:30</p>
+                                                      <p>XXX修改数据集。。。。</p>
+                                                  </div>
+												  <div class="text">
+                                                      
+                                                      <p class="attribution"><a href="#">XXX</a> 2017年12月31日 15:30</p>
+                                                      <p>XXX上传数据集。。。。</p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+								  
+                                  <!-- profile -->
+                                  <div id="profile" class="tab-pane">
+                                    <section class="panel">
+                                      <div class="bio-graph-heading">
+                                                大家好！我是XXX。我是一名.....
+                                      </div>
+                                      <div class="panel-body bio-graph-info">
+                                          <h1>基本信息</h1>
+                                          <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span>用户名 </span>: XXX </p>
+                                              </div>
+                                                                                           
+                                              <div class="bio-row">
+                                                  <p><span>生日</span>: 1999-9-9</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>国家 </span>: 中国</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>用户类型 </span>: 普通用户</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>邮箱 </span>:XXX@XXXX.com</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>联系方式 </span>: (+6283) 456 789</p>
+                                              </div>                                             
+                                          </div>
+                                      </div>
+                                    </section>
+                                      <section>
+                                          <div class="row">                                              
+                                          </div>
+                                      </section>
+                                  </div>
+                                  <!-- edit-profile -->
+                                  <div id="edit-profile" class="tab-pane">
+                                    <section class="panel">                                          
+                                          <div class="panel-body bio-graph-info">
+                                              <h1> 个人信息</h1>
+                                              <form class="form-horizontal" role="form">                                                  
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">用户名</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="f-name" placeholder=" ">
+                                                      </div>
+                                                  </div>
+                                                  
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">关于我</label>
+                                                      <div class="col-lg-10">
+                                                          <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">国家</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="c-name" placeholder=" ">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">生日</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="b-day" placeholder=" ">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">用户类型</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="occupation" placeholder=" ">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">邮箱</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="email" placeholder=" ">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-2 control-label">联系方式</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="text" class="form-control" id="mobile" placeholder=" ">
+                                                      </div>
+                                                  </div>
+                                                 
+
+                                                  <div class="form-group">
+                                                      <div class="col-lg-offset-2 col-lg-10">
+                                                          <button type="submit" class="btn btn-primary">保存</button>
+                                                          <button type="button" class="btn btn-danger">取消</button>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                          </div>
+                                      </section>
+                                  </div>
+                              </div>
+                          </div>
+                      </section>
+                 </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+  <!-- container section end -->
+    <!-- javascripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- jquery knob -->
+    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+  <script>
+      //knob
+      $(".knob").knob();
+  </script>
+  </body>
+</html>

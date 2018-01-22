@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=FSNXUAmMGCn3R4nCPoLZ1MnKZKDcdiIX"></script>
+  <script src="{{ url_for('static',filename='js/echarts.min.js') }}"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+</head>
+<body >
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 100%;height:900px;"></div>
+
+<script>
+ var myChart = echarts.init(document.getElementById('main'));
+  var geoCoorddata = {
+'1': [120.168799,33.354391] ,
+'5': [120.153019,33.364616] ,
+'6': [120.157191,33.364138] ,
+'7': [120.154815,33.361177] ,
+'8': [120.155065,33.357925] ,
+'9': [120.161685,33.353931] ,
+'10': [120.167861,33.349335] ,
+'12': [120.172953,33.341257] ,
+'14': [120.183159,33.33281] ,
+'15': [120.186353,33.326595] ,
+'16': [120.160166,33.369124] ,
+'17': [120.166941,33.364783] ,
+'18': [120.166032,33.359967] ,
+'19': [120.172599,33.354709] ,
+'20': [120.177801,33.357044] ,
+'21': [120.184546,33.350928] ,
+'22': [120.182409,33.341503] ,
+'23': [120.186371,33.337744] ,
+'25': [120.196008,33.331092] ,
+'26': [120.198549,33.32676] ,
+'27': [120.168362,33.375342] ,
+'28': [120.168537,33.374091] ,
+'29': [120.120574,33.399209] ,
+'30': [120.177061,33.369055] ,
+'31': [120.17881,33.363859] ,
+'34': [120.182986,33.373868] ,
+'35': [120.18905,33.366453] ,
+'36': [120.140832,33.357781] ,
+'37': [120.151868,33.343761] ,
+'38': [120.143907,33.363293] ,
+'39': [120.14578,33.359119] ,
+'40': [120.150431,33.355113] ,
+'41': [120.152204,33.350986] ,
+'42': [120.160913,33.365806] ,
+'43': [120.161724,33.362943] ,
+'44': [120.1637,33.358636] ,
+'45': [120.169845,33.367] ,
+'46': [120.187535,33.348956] ,
+'47': [120.194512,33.337305] ,
+'48': [120.189481,33.341939] ,
+'50': [120.166538,33.353088] ,
+'51': [120.153663,33.398638] ,
+'53': [120.151672,33.363239] ,
+'54': [120.164776,33.370081] ,
+'55': [120.155217,33.363964] ,
+'56': [120.160011,33.344307] ,
+'57': [120.165078,33.360643] ,
+'58': [120.143295,33.393225] ,
+'59': [120.137967,33.392192] ,
+'60': [120.16169,33.347599] ,
+'61': [120.174318,33.329051] ,
+'62': [120.183578,33.353851] ,
+'63': [120.175798,33.345092] ,
+'64': [120.173874,33.348442] ,
+'65': [120.170602,33.348944] ,
+'66': [120.166864,33.34553] ,
+'67': [120.182213,33.345183] ,
+'68': [120.178143,33.344789] ,
+'69': [120.170999,33.336837] ,
+'70': [120.170989,33.336847] ,
+'71': [120.161778,33.332397] ,
+'73': [120.179344,33.33908] ,
+'74': [120.192596,33.334977] ,
+'75': [120.194193,33.335883] ,
+'76': [120.162989,33.353818] ,
+'77': [120.18846,33.335256] ,
+'78': [120.177593,33.332291] ,
+'80': [120.177749,33.335311] ,
+'81': [120.148993,33.349679] ,
+'83': [120.166511,33.341485] ,
+'85': [120.187483,33.313051] ,
+'86': [120.189293,33.360032] ,
+'88': [120.167471,33.343375] ,
+'92': [120.148606,33.407308] ,
+'93': [120.152571,33.406144] ,
+'95': [120.159855,33.403893] ,
+'96': [120.144293,33.386595] ,
+'97': [120.136481,33.403937] ,
+'98': [120.146188,33.397103] ,
+'99': [120.161669,33.397042] ,
+'100': [120.159854,33.395762] ,
+'101': [120.182712,33.381931] ,
+'102': [120.159489,33.369525] ,
+'103': [120.155822,33.361281] ,
+'105': [120.159201,33.372692] ,
+'106': [120.156315,33.372165] ,
+'107': [120.157041,33.364138] ,
+'108': [120.177891,33.357014] ,
+'109': [120.221699,33.419579] ,
+'110': [120.143242,33.389484] ,
+'111': [120.139664,33.367268] ,
+'115': [120.170737,33.338673] ,
+'119': [120.134086,33.401087] ,
+'120': [120.139471,33.399875] ,
+'121': [120.14686,33.400999] ,
+'122': [120.15554,33.372982] ,
+'123': [120.159613,33.407865] ,
+'124': [120.16421,33.401827] ,
+'125': [120.166027,33.399014] ,
+'126': [120.164834,33.395065] ,
+'127': [120.169886,33.388627] ,
+'128': [120.168565,33.385593] ,
+'129': [120.173413,33.384006] ,
+'130': [120.180641,33.388149] ,
+'131': [120.159705,33.387726] ,
+'132': [120.162295,33.382887] ,
+'133': [120.159659,33.382041] ,
+'134': [120.152006,33.381594] ,
+'135': [120.146189,33.377188] ,
+'136': [120.142408,33.376256] ,
+'138': [120.134576,33.37354] ,
+'140': [120.159765,33.387626] ,
+'141': [120.159634,33.390369] ,
+'142': [120.169107,33.389446] ,
+'143': [120.158288,33.396172] ,
+'144': [120.15699,33.40277] ,
+'145': [120.16257,33.400114] ,
+'147': [120.147916,33.399382] ,
+'149': [120.140444,33.392073] ,
+'150': [120.161686,33.39699] ,
+'151': [120.137483,33.372824] ,
+'152': [120.158458,33.399098] ,
+'153': [120.155648,33.398556] ,
+'155': [120.150081,33.39502] ,
+'156': [120.138477,33.391279,] ,
+'157': [120.199975,33.327918,] ,
+'158': [120.153153,33.375396] ,
+'159': [120.150276,33.38922] ,
+'160': [120.148901,33.393869] ,
+'161': [120.212232,33.366727] ,
+'162': [120.14022,33.403248] ,
+'163': [120.149982,33.407865] ,
+'164': [120.13822,33.388336] ,
+'165': [120.142788,33.397787] ,
+'166': [120.142884,33.397491] ,
+'167': [120.145039,33.384027] ,
+'168': [120.146702,33.372217] ,
+'169': [120.147277,33.372345] ,
+'170': [120.144763,33.381926] ,
+'171': [120.145241,33.368687] ,
+'172': [120.144531,33.375752] ,
+'173': [120.164323,33.359636] ,
+'174': [120.127827,33.386354] ,
+'175': [120.137906,33.400893] ,
+'177': [120.138443,33.370043] ,
+'178': [120.135012,33.37805] ,
+'179': [120.167986,33.395513] ,
+'180': [120.164979,33.393005] ,
+'181': [120.155029,33.363014,] ,
+'182': [120.164557,33.35066] ,
+'183': [120.152131,33.391173] ,
+'184': [120.147322,33.389731] ,
+'185': [120.143605,33.386959] ,
+'186': [120.142561,33.388755,] ,
+'187': [120.136168,33.3873] ,
+'188': [120.13088,33.387606] ,
+'189': [120.103281,33.381098] ,
+'190': [120.125202,33.379613] ,
+'191': [120.129594,33.380609] ,
+'192': [120.11171,33.380401] ,
+'194': [120.155724,33.3896] ,
+'195': [120.144931,33.40195] ,
+'196': [120.142931,33.406609] ,
+'197': [120.152332,33.408888] ,
+'198': [120.147281,33.404232] ,
+'199': [120.139829,33.408369] ,
+'200': [120.14767,33.398286] ,
+'201': [120.163152,33.39086] ,
+'202': [120.220796,33.382764] ,
+'203': [120.244684,33.386767] ,
+'209': [120.246788,33.36456] ,
+'210': [120.243008,33.362844] ,
+'211': [120.236668,33.37387] ,
+'213': [120.212399,33.373935] ,
+'216': [120.239303,33.385221] ,
+'217': [120.239076,33.39356] ,
+'218': [120.237049,33.388603] ,
+'219': [120.223831,33.389791] ,
+'220': [120.223838,33.38573] ,
+'221': [120.223768,33.388464] ,
+'222': [120.219212,33.384906] ,
+'223': [120.1631,33.39086] ,
+'224': [120.209221,33.374741] ,
+'225': [120.214031,33.374242] ,
+'229': [120.253238,33.340553] ,
+'231': [120.24552,33.387242] ,
+'236': [120.209221,33.374841] ,
+'237': [120.148146,33.400508] ,
+'239': [120.129307,33.372628] ,
+'240': [120.172723,33.388996] ,
+'241': [120.140434,33.392093] ,
+'242': [120.136021,33.393231] ,
+'246': [120.150234,33.37765] ,
+'247': [120.164075,33.36205] ,
+'248': [120.168414,33.361479] ,
+'249': [120.164208,33.353956] ,
+'250': [120.184546,33.350428] ,
+'252': [120.131431,33.428188] ,
+'255': [120.219372,33.387929] ,
+'256': [120.173176,33.39729] ,
+'260': [120.216728,33.394139] ,
+'261': [120.20853,33.396517] ,
+'262': [120.204718,33.394786] ,
+'263': [120.167121,33.353517] ,
+'265': [120.189118,33.400528] ,
+'266': [120.198461,33.397282] ,
+'268': [120.192555,33.343269] ,
+'269': [120.138974,33.369756] ,
+'270': [120.130355,33.371212] ,
+'271': [120.138737,33.38178] ,
+'272': [120.1369,33.421059] ,
+'274': [120.144444,33.41994] ,
+'275': [120.200697,33.393916] ,
+'277': [120.120504,33.399299] ,
+'281': [120.196508,33.331092] ,
+'285': [120.177384,33.322596] ,
+'287': [120.183911,33.313901] ,
+'288': [120.148963,33.367858] ,
+'290': [120.186184,33.327504] ,
+'293': [120.187155,33.339501] ,
+'295': [120.168578,33.354715] ,
+'297': [120.188434,33.370713] ,
+'298': [120.191873,33.365096] ,
+'299': [120.192585,33.364189] ,
+'300': [120.145758,33.340306] ,
+'301': [120.149395,33.333865] ,
+'302': [120.157236,33.328351] ,
+'303': [120.165799,33.344267] ,
+'305': [120.163306,33.340699] ,
+'306': [120.153728,33.343297] ,
+'308': [120.13476,33.355422] ,
+'309': [120.160232,33.344315] ,
+'310': [120.160282,33.344315] ,
+'311': [120.160202,33.344315] ,
+'313': [120.146919,33.387708] ,
+'314': [120.133256,33.37335] ,
+'315': [120.134681,33.380668] ,
+'318': [120.139612,33.345636] ,
+'319': [120.156983,33.339754] ,
+'320': [120.154895,33.397039] ,
+'321': [120.144621,33.392464] ,
+'322': [120.147855,33.390192,] ,
+'323': [120.1724,33.360034] ,
+'324': [120.167996,33.395513] ,
+'326': [120.182927,33.374959] ,
+'329': [120.196496,33.363376] ,
+'332': [120.164994,33.33542] ,
+'333': [120.170297,33.334537] ,
+'334': [120.201995,33.327199,] ,
+'337': [120.177932,33.342721] ,
+'339': [120.16001,33.329619] ,
+'342': [120.11823,33.311692] ,
+'343': [120.155569,33.347155] ,
+'353': [120.170397,33.334517] ,
+'354': [120.151838,33.330811] ,
+'355': [120.234027,33.288983] ,
+'357': [120.147978,33.414958] ,
+'359': [120.138072,33.381399] ,
+'361': [120.189273,33.346379] ,
+'366': [120.138714,33.42497] ,
+'367': [120.214239,33.404622] ,
+'368': [120.209704,33.395258] ,
+'370': [120.214358,33.406114] ,
+'378': [120.18213,33.408853] ,
+'382': [120.236548,33.382938] ,
+'387': [120.224752,33.375652] ,
+'395': [120.213734,33.382504] ,
+'396': [120.162207,33.390764] ,
+'397': [120.141895,33.347822] ,
+'398': [120.180817,33.340651] ,
+'399': [120.137524,33.387796] ,
+'417': [120.177977,33.359098] ,
+
+  
+
+
+    },
+    option = {
+      visualMap: { //图例值控制
+          min: 0,
+          max: 30,
+          calculable: true,
+          color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
+          textStyle: {
+              color: '#fff'
+          }
+      },
+        bmap: {
+            center: [113.65, 34.76],
+            zoom: 5,
+            roam: true,
+          visualMap: { //图例值控制
+          min: 0,
+          max: 16,
+          calculable: true,
+          color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
+          textStyle: {
+              color: '#fff'
+          }
+      },
+        mapStyle: {
+              'styleJson': [
+                {
+                  'featureType': 'water',
+                  'elementType': 'all',
+                  'stylers': {
+                    'color': '#031628'
+                  }
+                },
+                {
+                  'featureType': 'land',
+                  'elementType': 'geometry',
+                  'stylers': {
+                    'color': '#000102'
+                  }
+                },
+                {
+                  'featureType': 'highway',
+                  'elementType': 'all',
+                  'stylers': {
+                    'visibility': 'off'
+                  }
+                },
+                {
+                  'featureType': 'arterial',
+                  'elementType': 'geometry.fill',
+                  'stylers': {
+                    'color': '#000000'
+                  }
+                },
+                {
+                  'featureType': 'arterial',
+                  'elementType': 'geometry.stroke',
+                  'stylers': {
+                    'color': '#0b3d51'
+                  }
+                },
+                {
+                  'featureType': 'local',
+                  'elementType': 'geometry',
+                  'stylers': {
+                    'color': '#000000'
+                  }
+                },
+                {
+                  'featureType': 'railway',
+                  'elementType': 'geometry.fill',
+                  'stylers': {
+                    'color': '#000000'
+                  }
+                },
+                {
+                  'featureType': 'railway',
+                  'elementType': 'geometry.stroke',
+                  'stylers': {
+                    'color': '#08304b'
+                  }
+                },
+                {
+                  'featureType': 'subway',
+                  'elementType': 'geometry',
+                  'stylers': {
+                    'lightness': -70
+                  }
+                },
+                {
+                  'featureType': 'building',
+                  'elementType': 'geometry.fill',
+                  'stylers': {
+                    'color': '#000000'
+                  }
+                },
+                {
+                  'featureType': 'all',
+                  'elementType': 'labels.text.fill',
+                  'stylers': {
+                    'color': '#857f7f'
+                  }
+                },
+                {
+                  'featureType': 'all',
+                  'elementType': 'labels.text.stroke',
+                  'stylers': {
+                    'color': '#000000'
+                  }
+                },
+                {
+                  'featureType': 'building',
+                  'elementType': 'geometry',
+                  'stylers': {
+                    'color': '#022338'
+                  }
+                },
+                {
+                  'featureType': 'green',
+                  'elementType': 'geometry',
+                  'stylers': {
+                    'color': '#062032'
+                  }
+                },
+                {
+                  'featureType': 'boundary',
+                  'elementType': 'all',
+                  'stylers': {
+                    'color': '#465b6c'
+                  }
+                },
+                {
+                  'featureType': 'manmade',
+                  'elementType': 'all',
+                  'stylers': {
+                    'color': '#022338'
+                  }
+                },
+                {
+                  'featureType': 'label',
+                  'elementType': 'all',
+                  'stylers': {
+                    'visibility': 'off'
+                  }
+                }
+              ]
+            }
+
+          
+        },
+        series: [
+        {
+
+             label: {
+                  normal: {
+                      show: true,
+                      position: 'right', //显示位置
+                      offset: [5, 0], //偏移设置
+                      formatter: '{b}' //圆环显示文字
+                  },
+                  emphasis: {
+                      show: false
+                  }
+              },
+          
+
+            type: 'lines',
+
+            mapType: 'china',
+            coordinateSystem: 'bmap',
+            zlevel: 1,
+            data: [{name:'199', value:9,toname:'199', coords:[geoCoorddata['199'], geoCoorddata['199']]},{name:'199', value:11,toname:'162', coords:[geoCoorddata['199'], geoCoorddata['162']]},{name:'194', value:13,toname:'194', coords:[geoCoorddata['194'], geoCoorddata['194']]},{name:'194', value:6,toname:'168', coords:[geoCoorddata['194'], geoCoorddata['168']]},{name:'194', value:5,toname:'159', coords:[geoCoorddata['194'], geoCoorddata['159']]},{name:'197', value:5,toname:'197', coords:[geoCoorddata['197'], geoCoorddata['197']]},{name:'196', value:6,toname:'196', coords:[geoCoorddata['196'], geoCoorddata['196']]},{name:'191', value:7,toname:'269', coords:[geoCoorddata['191'], geoCoorddata['269']]},{name:'191', value:11,toname:'191', coords:[geoCoorddata['191'], geoCoorddata['191']]},{name:'191', value:5,toname:'178', coords:[geoCoorddata['191'], geoCoorddata['178']]},{name:'191', value:7,toname:'170', coords:[geoCoorddata['191'], geoCoorddata['170']]},{name:'191', value:5,toname:'186', coords:[geoCoorddata['191'], geoCoorddata['186']]},{name:'191', value:5,toname:'187', coords:[geoCoorddata['191'], geoCoorddata['187']]},{name:'191', value:5,toname:'156', coords:[geoCoorddata['191'], geoCoorddata['156']]},{name:'190', value:13,toname:'190', coords:[geoCoorddata['190'], geoCoorddata['190']]},{name:'190', value:7,toname:'170', coords:[geoCoorddata['190'], geoCoorddata['170']]},{name:'270', value:8,toname:'270', coords:[geoCoorddata['270'], geoCoorddata['270']]},{name:'270', value:6,toname:'170', coords:[geoCoorddata['270'], geoCoorddata['170']]},{name:'275', value:9,toname:'263', coords:[geoCoorddata['275'], geoCoorddata['263']]},{name:'275', value:6,toname:'275', coords:[geoCoorddata['275'], geoCoorddata['275']]},{name:'108', value:7,toname:'108', coords:[geoCoorddata['108'], geoCoorddata['108']]},{name:'108', value:5,toname:'1', coords:[geoCoorddata['108'], geoCoorddata['1']]},{name:'101', value:5,toname:'132', coords:[geoCoorddata['101'], geoCoorddata['132']]},{name:'101', value:5,toname:'101', coords:[geoCoorddata['101'], geoCoorddata['101']]},{name:'39', value:5,toname:'53', coords:[geoCoorddata['39'], geoCoorddata['53']]},{name:'39', value:6,toname:'7', coords:[geoCoorddata['39'], geoCoorddata['7']]},{name:'39', value:16,toname:'39', coords:[geoCoorddata['39'], geoCoorddata['39']]},{name:'39', value:5,toname:'42', coords:[geoCoorddata['39'], geoCoorddata['42']]},{name:'39', value:7,toname:'41', coords:[geoCoorddata['39'], geoCoorddata['41']]},{name:'38', value:6,toname:'38', coords:[geoCoorddata['38'], geoCoorddata['38']]},{name:'30', value:6,toname:'30', coords:[geoCoorddata['30'], geoCoorddata['30']]},{name:'37', value:5,toname:'37', coords:[geoCoorddata['37'], geoCoorddata['37']]},{name:'36', value:7,toname:'36', coords:[geoCoorddata['36'], geoCoorddata['36']]},{name:'34', value:5,toname:'127', coords:[geoCoorddata['34'], geoCoorddata['127']]},{name:'34', value:5,toname:'129', coords:[geoCoorddata['34'], geoCoorddata['129']]},{name:'34', value:10,toname:'34', coords:[geoCoorddata['34'], geoCoorddata['34']]},{name:'6', value:10,toname:'6', coords:[geoCoorddata['6'], geoCoorddata['6']]},{name:'6', value:6,toname:'169', coords:[geoCoorddata['6'], geoCoorddata['169']]},{name:'1', value:8,toname:'1', coords:[geoCoorddata['1'], geoCoorddata['1']]},{name:'1', value:5,toname:'20', coords:[geoCoorddata['1'], geoCoorddata['20']]},{name:'144', value:8,toname:'144', coords:[geoCoorddata['144'], geoCoorddata['144']]},{name:'145', value:5,toname:'180', coords:[geoCoorddata['145'], geoCoorddata['180']]},{name:'145', value:5,toname:'181', coords:[geoCoorddata['145'], geoCoorddata['181']]},{name:'145', value:20,toname:'145', coords:[geoCoorddata['145'], geoCoorddata['145']]},{name:'142', value:7,toname:'142', coords:[geoCoorddata['142'], geoCoorddata['142']]},{name:'143', value:10,toname:'143', coords:[geoCoorddata['143'], geoCoorddata['143']]},{name:'140', value:7,toname:'140', coords:[geoCoorddata['140'], geoCoorddata['140']]},{name:'141', value:7,toname:'184', coords:[geoCoorddata['141'], geoCoorddata['184']]},{name:'141', value:5,toname:'152', coords:[geoCoorddata['141'], geoCoorddata['152']]},{name:'141', value:8,toname:'141', coords:[geoCoorddata['141'], geoCoorddata['141']]},{name:'149', value:6,toname:'173', coords:[geoCoorddata['149'], geoCoorddata['173']]},{name:'149', value:7,toname:'170', coords:[geoCoorddata['149'], geoCoorddata['170']]},{name:'149', value:7,toname:'186', coords:[geoCoorddata['149'], geoCoorddata['186']]},{name:'149', value:10,toname:'165', coords:[geoCoorddata['149'], geoCoorddata['165']]},{name:'149', value:9,toname:'160', coords:[geoCoorddata['149'], geoCoorddata['160']]},{name:'149', value:21,toname:'161', coords:[geoCoorddata['149'], geoCoorddata['161']]},{name:'149', value:12,toname:'155', coords:[geoCoorddata['149'], geoCoorddata['155']]},{name:'149', value:5,toname:'156', coords:[geoCoorddata['149'], geoCoorddata['156']]},{name:'149', value:11,toname:'320', coords:[geoCoorddata['149'], geoCoorddata['320']]},{name:'149', value:13,toname:'321', coords:[geoCoorddata['149'], geoCoorddata['321']]},{name:'149', value:14,toname:'149', coords:[geoCoorddata['149'], geoCoorddata['149']]},{name:'133', value:7,toname:'133', coords:[geoCoorddata['133'], geoCoorddata['133']]},{name:'132', value:10,toname:'132', coords:[geoCoorddata['132'], geoCoorddata['132']]},{name:'132', value:8,toname:'101', coords:[geoCoorddata['132'], geoCoorddata['101']]},{name:'131', value:7,toname:'131', coords:[geoCoorddata['131'], geoCoorddata['131']]},{name:'136', value:15,toname:'136', coords:[geoCoorddata['136'], geoCoorddata['136']]},{name:'136', value:10,toname:'314', coords:[geoCoorddata['136'], geoCoorddata['314']]},{name:'136', value:5,toname:'177', coords:[geoCoorddata['136'], geoCoorddata['177']]},{name:'136', value:6,toname:'170', coords:[geoCoorddata['136'], geoCoorddata['170']]},{name:'136', value:6,toname:'186', coords:[geoCoorddata['136'], geoCoorddata['186']]},{name:'136', value:5,toname:'169', coords:[geoCoorddata['136'], geoCoorddata['169']]},{name:'135', value:14,toname:'135', coords:[geoCoorddata['135'], geoCoorddata['135']]},{name:'135', value:5,toname:'134', coords:[geoCoorddata['135'], geoCoorddata['134']]},{name:'135', value:6,toname:'314', coords:[geoCoorddata['135'], geoCoorddata['314']]},{name:'135', value:6,toname:'170', coords:[geoCoorddata['135'], geoCoorddata['170']]},{name:'135', value:8,toname:'186', coords:[geoCoorddata['135'], geoCoorddata['186']]},{name:'135', value:7,toname:'322', coords:[geoCoorddata['135'], geoCoorddata['322']]},{name:'134', value:7,toname:'134', coords:[geoCoorddata['134'], geoCoorddata['134']]},{name:'27', value:9,toname:'27', coords:[geoCoorddata['27'], geoCoorddata['27']]},{name:'20', value:10,toname:'20', coords:[geoCoorddata['20'], geoCoorddata['20']]},{name:'20', value:7,toname:'1', coords:[geoCoorddata['20'], geoCoorddata['1']]},{name:'181', value:5,toname:'125', coords:[geoCoorddata['181'], geoCoorddata['125']]},{name:'181', value:5,toname:'183', coords:[geoCoorddata['181'], geoCoorddata['183']]},{name:'181', value:13,toname:'180', coords:[geoCoorddata['181'], geoCoorddata['180']]},{name:'181', value:14,toname:'181', coords:[geoCoorddata['181'], geoCoorddata['181']]},{name:'181', value:5,toname:'184', coords:[geoCoorddata['181'], geoCoorddata['184']]},{name:'181', value:10,toname:'150', coords:[geoCoorddata['181'], geoCoorddata['150']]},{name:'181', value:5,toname:'145', coords:[geoCoorddata['181'], geoCoorddata['145']]},{name:'81', value:7,toname:'81', coords:[geoCoorddata['81'], geoCoorddata['81']]},{name:'86', value:6,toname:'86', coords:[geoCoorddata['86'], geoCoorddata['86']]},{name:'7', value:8,toname:'53', coords:[geoCoorddata['7'], geoCoorddata['53']]},{name:'7', value:6,toname:'7', coords:[geoCoorddata['7'], geoCoorddata['7']]},{name:'7', value:7,toname:'39', coords:[geoCoorddata['7'], geoCoorddata['39']]},{name:'7', value:5,toname:'5', coords:[geoCoorddata['7'], geoCoorddata['5']]},{name:'179', value:5,toname:'179', coords:[geoCoorddata['179'], geoCoorddata['179']]},{name:'178', value:6,toname:'136', coords:[geoCoorddata['178'], geoCoorddata['136']]},{name:'178', value:10,toname:'178', coords:[geoCoorddata['178'], geoCoorddata['178']]},{name:'178', value:5,toname:'177', coords:[geoCoorddata['178'], geoCoorddata['177']]},{name:'178', value:5,toname:'187', coords:[geoCoorddata['178'], geoCoorddata['187']]},{name:'178', value:6,toname:'156', coords:[geoCoorddata['178'], geoCoorddata['156']]},{name:'177', value:6,toname:'136', coords:[geoCoorddata['177'], geoCoorddata['136']]},{name:'177', value:9,toname:'177', coords:[geoCoorddata['177'], geoCoorddata['177']]},{name:'175', value:9,toname:'175', coords:[geoCoorddata['175'], geoCoorddata['175']]},{name:'175', value:7,toname:'173', coords:[geoCoorddata['175'], geoCoorddata['173']]},{name:'175', value:5,toname:'186', coords:[geoCoorddata['175'], geoCoorddata['186']]},{name:'173', value:6,toname:'199', coords:[geoCoorddata['173'], geoCoorddata['199']]},{name:'173', value:5,toname:'110', coords:[geoCoorddata['173'], geoCoorddata['110']]},{name:'173', value:28,toname:'173', coords:[geoCoorddata['173'], geoCoorddata['173']]},{name:'173', value:6,toname:'170', coords:[geoCoorddata['173'], geoCoorddata['170']]},{name:'173', value:15,toname:'186', coords:[geoCoorddata['173'], geoCoorddata['186']]},{name:'173', value:5,toname:'187', coords:[geoCoorddata['173'], geoCoorddata['187']]},{name:'173', value:6,toname:'185', coords:[geoCoorddata['173'], geoCoorddata['185']]},{name:'173', value:10,toname:'165', coords:[geoCoorddata['173'], geoCoorddata['165']]},{name:'173', value:8,toname:'156', coords:[geoCoorddata['173'], geoCoorddata['156']]},{name:'173', value:6,toname:'149', coords:[geoCoorddata['173'], geoCoorddata['149']]},{name:'172', value:5,toname:'41', coords:[geoCoorddata['172'], geoCoorddata['41']]},{name:'170', value:5,toname:'136', coords:[geoCoorddata['170'], geoCoorddata['136']]},{name:'170', value:5,toname:'135', coords:[geoCoorddata['170'], geoCoorddata['135']]},{name:'170', value:9,toname:'191', coords:[geoCoorddata['170'], geoCoorddata['191']]},{name:'170', value:6,toname:'190', coords:[geoCoorddata['170'], geoCoorddata['190']]},{name:'170', value:7,toname:'173', coords:[geoCoorddata['170'], geoCoorddata['173']]},{name:'170', value:24,toname:'170', coords:[geoCoorddata['170'], geoCoorddata['170']]},{name:'170', value:14,toname:'186', coords:[geoCoorddata['170'], geoCoorddata['186']]},{name:'170', value:6,toname:'185', coords:[geoCoorddata['170'], geoCoorddata['185']]},{name:'170', value:7,toname:'168', coords:[geoCoorddata['170'], geoCoorddata['168']]},{name:'170', value:9,toname:'149', coords:[geoCoorddata['170'], geoCoorddata['149']]},{name:'182', value:10,toname:'182', coords:[geoCoorddata['182'], geoCoorddata['182']]},{name:'182', value:10,toname:'186', coords:[geoCoorddata['182'], geoCoorddata['186']]},{name:'182', value:7,toname:'184', coords:[geoCoorddata['182'], geoCoorddata['184']]},{name:'182', value:6,toname:'161', coords:[geoCoorddata['182'], geoCoorddata['161']]},{name:'183', value:10,toname:'183', coords:[geoCoorddata['183'], geoCoorddata['183']]},{name:'183', value:5,toname:'180', coords:[geoCoorddata['183'], geoCoorddata['180']]},{name:'183', value:6,toname:'186', coords:[geoCoorddata['183'], geoCoorddata['186']]},{name:'183', value:5,toname:'160', coords:[geoCoorddata['183'], geoCoorddata['160']]},{name:'183', value:7,toname:'161', coords:[geoCoorddata['183'], geoCoorddata['161']]},{name:'180', value:9,toname:'180', coords:[geoCoorddata['180'], geoCoorddata['180']]},{name:'180', value:12,toname:'181', coords:[geoCoorddata['180'], geoCoorddata['181']]},{name:'180', value:5,toname:'150', coords:[geoCoorddata['180'], geoCoorddata['150']]},{name:'186', value:5,toname:'136', coords:[geoCoorddata['186'], geoCoorddata['136']]},{name:'186', value:6,toname:'135', coords:[geoCoorddata['186'], geoCoorddata['135']]},{name:'186', value:5,toname:'199', coords:[geoCoorddata['186'], geoCoorddata['199']]},{name:'186', value:5,toname:'175', coords:[geoCoorddata['186'], geoCoorddata['175']]},{name:'186', value:15,toname:'173', coords:[geoCoorddata['186'], geoCoorddata['173']]},{name:'186', value:9,toname:'170', coords:[geoCoorddata['186'], geoCoorddata['170']]},{name:'186', value:9,toname:'182', coords:[geoCoorddata['186'], geoCoorddata['182']]},{name:'186', value:6,toname:'183', coords:[geoCoorddata['186'], geoCoorddata['183']]},{name:'186', value:6,toname:'180', coords:[geoCoorddata['186'], geoCoorddata['180']]},{name:'186', value:20,toname:'186', coords:[geoCoorddata['186'], geoCoorddata['186']]},{name:'186', value:8,toname:'187', coords:[geoCoorddata['186'], geoCoorddata['187']]},{name:'186', value:5,toname:'184', coords:[geoCoorddata['186'], geoCoorddata['184']]},{name:'186', value:7,toname:'185', coords:[geoCoorddata['186'], geoCoorddata['185']]},{name:'186', value:8,toname:'188', coords:[geoCoorddata['186'], geoCoorddata['188']]},{name:'186', value:7,toname:'168', coords:[geoCoorddata['186'], geoCoorddata['168']]},{name:'186', value:5,toname:'165', coords:[geoCoorddata['186'], geoCoorddata['165']]},{name:'186', value:7,toname:'161', coords:[geoCoorddata['186'], geoCoorddata['161']]},{name:'186', value:5,toname:'156', coords:[geoCoorddata['186'], geoCoorddata['156']]},{name:'186', value:7,toname:'149', coords:[geoCoorddata['186'], geoCoorddata['149']]},{name:'187', value:7,toname:'191', coords:[geoCoorddata['187'], geoCoorddata['191']]},{name:'187', value:6,toname:'178', coords:[geoCoorddata['187'], geoCoorddata['178']]},{name:'187', value:11,toname:'186', coords:[geoCoorddata['187'], geoCoorddata['186']]},{name:'187', value:11,toname:'187', coords:[geoCoorddata['187'], geoCoorddata['187']]},{name:'187', value:5,toname:'188', coords:[geoCoorddata['187'], geoCoorddata['188']]},{name:'184', value:6,toname:'186', coords:[geoCoorddata['184'], geoCoorddata['186']]},{name:'184', value:5,toname:'187', coords:[geoCoorddata['184'], geoCoorddata['187']]},{name:'184', value:11,toname:'184', coords:[geoCoorddata['184'], geoCoorddata['184']]},{name:'184', value:8,toname:'165', coords:[geoCoorddata['184'], geoCoorddata['165']]},{name:'184', value:8,toname:'161', coords:[geoCoorddata['184'], geoCoorddata['161']]},{name:'185', value:5,toname:'173', coords:[geoCoorddata['185'], geoCoorddata['173']]},{name:'185', value:6,toname:'170', coords:[geoCoorddata['185'], geoCoorddata['170']]},{name:'185', value:5,toname:'186', coords:[geoCoorddata['185'], geoCoorddata['186']]},{name:'185', value:19,toname:'185', coords:[geoCoorddata['185'], geoCoorddata['185']]},{name:'185', value:5,toname:'168', coords:[geoCoorddata['185'], geoCoorddata['168']]},{name:'188', value:6,toname:'190', coords:[geoCoorddata['188'], geoCoorddata['190']]},{name:'188', value:5,toname:'178', coords:[geoCoorddata['188'], geoCoorddata['178']]},{name:'188', value:7,toname:'186', coords:[geoCoorddata['188'], geoCoorddata['186']]},{name:'188', value:5,toname:'187', coords:[geoCoorddata['188'], geoCoorddata['187']]},{name:'188', value:7,toname:'188', coords:[geoCoorddata['188'], geoCoorddata['188']]},{name:'10', value:9,toname:'10', coords:[geoCoorddata['10'], geoCoorddata['10']]},{name:'12', value:5,toname:'63', coords:[geoCoorddata['12'], geoCoorddata['63']]},{name:'12', value:12,toname:'70', coords:[geoCoorddata['12'], geoCoorddata['70']]},{name:'15', value:8,toname:'14', coords:[geoCoorddata['15'], geoCoorddata['14']]},{name:'15', value:8,toname:'75', coords:[geoCoorddata['15'], geoCoorddata['75']]},{name:'15', value:5,toname:'74', coords:[geoCoorddata['15'], geoCoorddata['74']]},{name:'15', value:6,toname:'73', coords:[geoCoorddata['15'], geoCoorddata['73']]},{name:'14', value:7,toname:'15', coords:[geoCoorddata['14'], geoCoorddata['15']]},{name:'14', value:7,toname:'14', coords:[geoCoorddata['14'], geoCoorddata['14']]},{name:'17', value:21,toname:'58', coords:[geoCoorddata['17'], geoCoorddata['58']]},{name:'17', value:13,toname:'17', coords:[geoCoorddata['17'], geoCoorddata['17']]},{name:'17', value:7,toname:'16', coords:[geoCoorddata['17'], geoCoorddata['16']]},{name:'16', value:7,toname:'8', coords:[geoCoorddata['16'], geoCoorddata['8']]},{name:'19', value:8,toname:'19', coords:[geoCoorddata['19'], geoCoorddata['19']]},{name:'18', value:7,toname:'19', coords:[geoCoorddata['18'], geoCoorddata['19']]},{name:'18', value:6,toname:'18', coords:[geoCoorddata['18'], geoCoorddata['18']]},{name:'62', value:7,toname:'62', coords:[geoCoorddata['62'], geoCoorddata['62']]},{name:'322', value:5,toname:'135', coords:[geoCoorddata['322'], geoCoorddata['135']]},{name:'322', value:10,toname:'322', coords:[geoCoorddata['322'], geoCoorddata['322']]},{name:'320', value:5,toname:'161', coords:[geoCoorddata['320'], geoCoorddata['161']]},{name:'320', value:11,toname:'320', coords:[geoCoorddata['320'], geoCoorddata['320']]},{name:'321', value:6,toname:'320', coords:[geoCoorddata['321'], geoCoorddata['320']]},{name:'321', value:9,toname:'321', coords:[geoCoorddata['321'], geoCoorddata['321']]},{name:'321', value:9,toname:'149', coords:[geoCoorddata['321'], geoCoorddata['149']]},{name:'202', value:7,toname:'222', coords:[geoCoorddata['202'], geoCoorddata['222']]},{name:'202', value:16,toname:'221', coords:[geoCoorddata['202'], geoCoorddata['221']]},{name:'202', value:6,toname:'220', coords:[geoCoorddata['202'], geoCoorddata['220']]},{name:'202', value:10,toname:'202', coords:[geoCoorddata['202'], geoCoorddata['202']]},{name:'76', value:7,toname:'76', coords:[geoCoorddata['76'], geoCoorddata['76']]},{name:'75', value:8,toname:'15', coords:[geoCoorddata['75'], geoCoorddata['15']]},{name:'75', value:6,toname:'75', coords:[geoCoorddata['75'], geoCoorddata['75']]},{name:'74', value:8,toname:'66', coords:[geoCoorddata['74'], geoCoorddata['66']]},{name:'74', value:5,toname:'69', coords:[geoCoorddata['74'], geoCoorddata['69']]},{name:'74', value:5,toname:'15', coords:[geoCoorddata['74'], geoCoorddata['15']]},{name:'74', value:6,toname:'74', coords:[geoCoorddata['74'], geoCoorddata['74']]},{name:'74', value:6,toname:'73', coords:[geoCoorddata['74'], geoCoorddata['73']]},{name:'73', value:5,toname:'50', coords:[geoCoorddata['73'], geoCoorddata['50']]},{name:'73', value:5,toname:'15', coords:[geoCoorddata['73'], geoCoorddata['15']]},{name:'73', value:6,toname:'74', coords:[geoCoorddata['73'], geoCoorddata['74']]},{name:'73', value:10,toname:'73', coords:[geoCoorddata['73'], geoCoorddata['73']]},{name:'71', value:10,toname:'71', coords:[geoCoorddata['71'], geoCoorddata['71']]},{name:'71', value:5,toname:'70', coords:[geoCoorddata['71'], geoCoorddata['70']]},{name:'70', value:22,toname:'65', coords:[geoCoorddata['70'], geoCoorddata['65']]},{name:'70', value:6,toname:'66', coords:[geoCoorddata['70'], geoCoorddata['66']]},{name:'70', value:19,toname:'12', coords:[geoCoorddata['70'], geoCoorddata['12']]},{name:'70', value:13,toname:'70', coords:[geoCoorddata['70'], geoCoorddata['70']]},{name:'78', value:5,toname:'78', coords:[geoCoorddata['78'], geoCoorddata['78']]},{name:'8', value:23,toname:'8', coords:[geoCoorddata['8'], geoCoorddata['8']]},{name:'8', value:6,toname:'56', coords:[geoCoorddata['8'], geoCoorddata['56']]},{name:'8', value:6,toname:'51', coords:[geoCoorddata['8'], geoCoorddata['51']]},{name:'8', value:7,toname:'39', coords:[geoCoorddata['8'], geoCoorddata['39']]},{name:'8', value:5,toname:'36', coords:[geoCoorddata['8'], geoCoorddata['36']]},{name:'8', value:5,toname:'169', coords:[geoCoorddata['8'], geoCoorddata['169']]},{name:'8', value:9,toname:'16', coords:[geoCoorddata['8'], geoCoorddata['16']]},{name:'8', value:5,toname:'42', coords:[geoCoorddata['8'], geoCoorddata['42']]},{name:'8', value:6,toname:'41', coords:[geoCoorddata['8'], geoCoorddata['41']]},{name:'8', value:10,toname:'9', coords:[geoCoorddata['8'], geoCoorddata['9']]},{name:'120', value:7,toname:'120', coords:[geoCoorddata['120'], geoCoorddata['120']]},{name:'121', value:13,toname:'121', coords:[geoCoorddata['121'], geoCoorddata['121']]},{name:'121', value:5,toname:'165', coords:[geoCoorddata['121'], geoCoorddata['165']]},{name:'122', value:6,toname:'122', coords:[geoCoorddata['122'], geoCoorddata['122']]},{name:'123', value:6,toname:'123', coords:[geoCoorddata['123'], geoCoorddata['123']]},{name:'124', value:7,toname:'124', coords:[geoCoorddata['124'], geoCoorddata['124']]},{name:'125', value:8,toname:'125', coords:[geoCoorddata['125'], geoCoorddata['125']]},{name:'126', value:9,toname:'126', coords:[geoCoorddata['126'], geoCoorddata['126']]},{name:'126', value:6,toname:'128', coords:[geoCoorddata['126'], geoCoorddata['128']]},{name:'127', value:6,toname:'127', coords:[geoCoorddata['127'], geoCoorddata['127']]},{name:'128', value:5,toname:'128', coords:[geoCoorddata['128'], geoCoorddata['128']]},{name:'129', value:14,toname:'129', coords:[geoCoorddata['129'], geoCoorddata['129']]},{name:'319', value:5,toname:'319', coords:[geoCoorddata['319'], geoCoorddata['319']]},{name:'319', value:5,toname:'60', coords:[geoCoorddata['319'], geoCoorddata['60']]},{name:'319', value:5,toname:'66', coords:[geoCoorddata['319'], geoCoorddata['66']]},{name:'318', value:5,toname:'318', coords:[geoCoorddata['318'], geoCoorddata['318']]},{name:'313', value:12,toname:'313', coords:[geoCoorddata['313'], geoCoorddata['313']]},{name:'313', value:5,toname:'186', coords:[geoCoorddata['313'], geoCoorddata['186']]},{name:'311', value:6,toname:'311', coords:[geoCoorddata['311'], geoCoorddata['311']]},{name:'311', value:7,toname:'60', coords:[geoCoorddata['311'], geoCoorddata['60']]},{name:'310', value:7,toname:'310', coords:[geoCoorddata['310'], geoCoorddata['310']]},{name:'310', value:5,toname:'60', coords:[geoCoorddata['310'], geoCoorddata['60']]},{name:'314', value:10,toname:'136', coords:[geoCoorddata['314'], geoCoorddata['136']]},{name:'314', value:5,toname:'135', coords:[geoCoorddata['314'], geoCoorddata['135']]},{name:'314', value:8,toname:'314', coords:[geoCoorddata['314'], geoCoorddata['314']]},{name:'60', value:6,toname:'319', coords:[geoCoorddata['60'], geoCoorddata['319']]},{name:'60', value:5,toname:'311', coords:[geoCoorddata['60'], geoCoorddata['311']]},{name:'60', value:9,toname:'306', coords:[geoCoorddata['60'], geoCoorddata['306']]},{name:'60', value:7,toname:'60', coords:[geoCoorddata['60'], geoCoorddata['60']]},{name:'65', value:19,toname:'70', coords:[geoCoorddata['65'], geoCoorddata['70']]},{name:'66', value:8,toname:'319', coords:[geoCoorddata['66'], geoCoorddata['319']]},{name:'66', value:7,toname:'309', coords:[geoCoorddata['66'], geoCoorddata['309']]},{name:'66', value:8,toname:'305', coords:[geoCoorddata['66'], geoCoorddata['305']]},{name:'66', value:7,toname:'66', coords:[geoCoorddata['66'], geoCoorddata['66']]},{name:'66', value:9,toname:'74', coords:[geoCoorddata['66'], geoCoorddata['74']]},{name:'66', value:5,toname:'70', coords:[geoCoorddata['66'], geoCoorddata['70']]},{name:'67', value:5,toname:'20', coords:[geoCoorddata['67'], geoCoorddata['20']]},{name:'67', value:10,toname:'67', coords:[geoCoorddata['67'], geoCoorddata['67']]},{name:'68', value:5,toname:'68', coords:[geoCoorddata['68'], geoCoorddata['68']]},{name:'256', value:5,toname:'256', coords:[geoCoorddata['256'], geoCoorddata['256']]},{name:'168', value:6,toname:'194', coords:[geoCoorddata['168'], geoCoorddata['194']]},{name:'168', value:6,toname:'170', coords:[geoCoorddata['168'], geoCoorddata['170']]},{name:'168', value:5,toname:'182', coords:[geoCoorddata['168'], geoCoorddata['182']]},{name:'168', value:8,toname:'186', coords:[geoCoorddata['168'], geoCoorddata['186']]},{name:'168', value:5,toname:'185', coords:[geoCoorddata['168'], geoCoorddata['185']]},{name:'168', value:13,toname:'168', coords:[geoCoorddata['168'], geoCoorddata['168']]},{name:'169', value:6,toname:'136', coords:[geoCoorddata['169'], geoCoorddata['136']]},{name:'169', value:7,toname:'135', coords:[geoCoorddata['169'], geoCoorddata['135']]},{name:'169', value:9,toname:'170', coords:[geoCoorddata['169'], geoCoorddata['170']]},{name:'169', value:12,toname:'186', coords:[geoCoorddata['169'], geoCoorddata['186']]},{name:'169', value:16,toname:'169', coords:[geoCoorddata['169'], geoCoorddata['169']]},{name:'165', value:7,toname:'121', coords:[geoCoorddata['165'], geoCoorddata['121']]},{name:'165', value:11,toname:'173', coords:[geoCoorddata['165'], geoCoorddata['173']]},{name:'165', value:5,toname:'186', coords:[geoCoorddata['165'], geoCoorddata['186']]},{name:'165', value:10,toname:'184', coords:[geoCoorddata['165'], geoCoorddata['184']]},{name:'165', value:20,toname:'165', coords:[geoCoorddata['165'], geoCoorddata['165']]},{name:'165', value:5,toname:'161', coords:[geoCoorddata['165'], geoCoorddata['161']]},{name:'165', value:7,toname:'162', coords:[geoCoorddata['165'], geoCoorddata['162']]},{name:'165', value:10,toname:'149', coords:[geoCoorddata['165'], geoCoorddata['149']]},{name:'160', value:11,toname:'160', coords:[geoCoorddata['160'], geoCoorddata['160']]},{name:'160', value:5,toname:'320', coords:[geoCoorddata['160'], geoCoorddata['320']]},{name:'161', value:8,toname:'182', coords:[geoCoorddata['161'], geoCoorddata['182']]},{name:'161', value:7,toname:'186', coords:[geoCoorddata['161'], geoCoorddata['186']]},{name:'161', value:10,toname:'184', coords:[geoCoorddata['161'], geoCoorddata['184']]},{name:'161', value:18,toname:'161', coords:[geoCoorddata['161'], geoCoorddata['161']]},{name:'161', value:7,toname:'320', coords:[geoCoorddata['161'], geoCoorddata['320']]},{name:'161', value:21,toname:'149', coords:[geoCoorddata['161'], geoCoorddata['149']]},{name:'162', value:14,toname:'162', coords:[geoCoorddata['162'], geoCoorddata['162']]},{name:'162', value:15,toname:'199', coords:[geoCoorddata['162'], geoCoorddata['199']]},{name:'162', value:6,toname:'165', coords:[geoCoorddata['162'], geoCoorddata['165']]},{name:'9', value:7,toname:'8', coords:[geoCoorddata['9'], geoCoorddata['8']]},{name:'9', value:5,toname:'51', coords:[geoCoorddata['9'], geoCoorddata['51']]},{name:'9', value:8,toname:'50', coords:[geoCoorddata['9'], geoCoorddata['50']]},{name:'9', value:5,toname:'88', coords:[geoCoorddata['9'], geoCoorddata['88']]},{name:'9', value:5,toname:'41', coords:[geoCoorddata['9'], geoCoorddata['41']]},{name:'9', value:15,toname:'9', coords:[geoCoorddata['9'], geoCoorddata['9']]},{name:'216', value:5,toname:'220', coords:[geoCoorddata['216'], geoCoorddata['220']]},{name:'263', value:7,toname:'263', coords:[geoCoorddata['263'], geoCoorddata['263']]},{name:'263', value:8,toname:'275', coords:[geoCoorddata['263'], geoCoorddata['275']]},{name:'263', value:5,toname:'266', coords:[geoCoorddata['263'], geoCoorddata['266']]},{name:'260', value:5,toname:'260', coords:[geoCoorddata['260'], geoCoorddata['260']]},{name:'266', value:9,toname:'263', coords:[geoCoorddata['266'], geoCoorddata['263']]},{name:'266', value:5,toname:'256', coords:[geoCoorddata['266'], geoCoorddata['256']]},{name:'266', value:10,toname:'266', coords:[geoCoorddata['266'], geoCoorddata['266']]},{name:'265', value:8,toname:'265', coords:[geoCoorddata['265'], geoCoorddata['265']]},{name:'269', value:9,toname:'269', coords:[geoCoorddata['269'], geoCoorddata['269']]},{name:'269', value:6,toname:'191', coords:[geoCoorddata['269'], geoCoorddata['191']]},{name:'58', value:11,toname:'58', coords:[geoCoorddata['58'], geoCoorddata['58']]},{name:'58', value:6,toname:'57', coords:[geoCoorddata['58'], geoCoorddata['57']]},{name:'58', value:27,toname:'17', coords:[geoCoorddata['58'], geoCoorddata['17']]},{name:'58', value:6,toname:'44', coords:[geoCoorddata['58'], geoCoorddata['44']]},{name:'58', value:8,toname:'43', coords:[geoCoorddata['58'], geoCoorddata['43']]},{name:'58', value:8,toname:'41', coords:[geoCoorddata['58'], geoCoorddata['41']]},{name:'55', value:9,toname:'55', coords:[geoCoorddata['55'], geoCoorddata['55']]},{name:'57', value:5,toname:'58', coords:[geoCoorddata['57'], geoCoorddata['58']]},{name:'57', value:5,toname:'57', coords:[geoCoorddata['57'], geoCoorddata['57']]},{name:'56', value:6,toname:'8', coords:[geoCoorddata['56'], geoCoorddata['8']]},{name:'56', value:9,toname:'56', coords:[geoCoorddata['56'], geoCoorddata['56']]},{name:'56', value:5,toname:'9', coords:[geoCoorddata['56'], geoCoorddata['9']]},{name:'51', value:6,toname:'8', coords:[geoCoorddata['51'], geoCoorddata['8']]},{name:'51', value:8,toname:'51', coords:[geoCoorddata['51'], geoCoorddata['51']]},{name:'50', value:5,toname:'51', coords:[geoCoorddata['50'], geoCoorddata['51']]},{name:'50', value:17,toname:'50', coords:[geoCoorddata['50'], geoCoorddata['50']]},{name:'50', value:5,toname:'44', coords:[geoCoorddata['50'], geoCoorddata['44']]},{name:'50', value:5,toname:'42', coords:[geoCoorddata['50'], geoCoorddata['42']]},{name:'50', value:5,toname:'9', coords:[geoCoorddata['50'], geoCoorddata['9']]},{name:'53', value:5,toname:'135', coords:[geoCoorddata['53'], geoCoorddata['135']]},{name:'53', value:19,toname:'53', coords:[geoCoorddata['53'], geoCoorddata['53']]},{name:'53', value:6,toname:'7', coords:[geoCoorddata['53'], geoCoorddata['7']]},{name:'53', value:5,toname:'39', coords:[geoCoorddata['53'], geoCoorddata['39']]},{name:'53', value:5,toname:'169', coords:[geoCoorddata['53'], geoCoorddata['169']]},{name:'53', value:6,toname:'42', coords:[geoCoorddata['53'], geoCoorddata['42']]},{name:'111', value:5,toname:'111', coords:[geoCoorddata['111'], geoCoorddata['111']]},{name:'110', value:5,toname:'173', coords:[geoCoorddata['110'], geoCoorddata['173']]},{name:'69', value:6,toname:'69', coords:[geoCoorddata['69'], geoCoorddata['69']]},{name:'308', value:5,toname:'308', coords:[geoCoorddata['308'], geoCoorddata['308']]},{name:'309', value:5,toname:'66', coords:[geoCoorddata['309'], geoCoorddata['66']]},{name:'300', value:6,toname:'300', coords:[geoCoorddata['300'], geoCoorddata['300']]},{name:'301', value:8,toname:'301', coords:[geoCoorddata['301'], geoCoorddata['301']]},{name:'301', value:6,toname:'302', coords:[geoCoorddata['301'], geoCoorddata['302']]},{name:'302', value:5,toname:'300', coords:[geoCoorddata['302'], geoCoorddata['300']]},{name:'302', value:5,toname:'301', coords:[geoCoorddata['302'], geoCoorddata['301']]},{name:'302', value:8,toname:'302', coords:[geoCoorddata['302'], geoCoorddata['302']]},{name:'303', value:8,toname:'303', coords:[geoCoorddata['303'], geoCoorddata['303']]},{name:'305', value:7,toname:'305', coords:[geoCoorddata['305'], geoCoorddata['305']]},{name:'305', value:5,toname:'60', coords:[geoCoorddata['305'], geoCoorddata['60']]},{name:'305', value:9,toname:'66', coords:[geoCoorddata['305'], geoCoorddata['66']]},{name:'306', value:11,toname:'306', coords:[geoCoorddata['306'], geoCoorddata['306']]},{name:'306', value:7,toname:'60', coords:[geoCoorddata['306'], geoCoorddata['60']]},{name:'222', value:11,toname:'222', coords:[geoCoorddata['222'], geoCoorddata['222']]},{name:'222', value:13,toname:'221', coords:[geoCoorddata['222'], geoCoorddata['221']]},{name:'222', value:8,toname:'202', coords:[geoCoorddata['222'], geoCoorddata['202']]},{name:'221', value:5,toname:'260', coords:[geoCoorddata['221'], geoCoorddata['260']]},{name:'221', value:17,toname:'222', coords:[geoCoorddata['221'], geoCoorddata['222']]},{name:'221', value:9,toname:'221', coords:[geoCoorddata['221'], geoCoorddata['221']]},{name:'221', value:16,toname:'202', coords:[geoCoorddata['221'], geoCoorddata['202']]},{name:'220', value:5,toname:'216', coords:[geoCoorddata['220'], geoCoorddata['216']]},{name:'220', value:5,toname:'202', coords:[geoCoorddata['220'], geoCoorddata['202']]},{name:'151', value:8,toname:'151', coords:[geoCoorddata['151'], geoCoorddata['151']]},{name:'150', value:6,toname:'180', coords:[geoCoorddata['150'], geoCoorddata['180']]},{name:'150', value:9,toname:'181', coords:[geoCoorddata['150'], geoCoorddata['181']]},{name:'150', value:17,toname:'150', coords:[geoCoorddata['150'], geoCoorddata['150']]},{name:'153', value:10,toname:'153', coords:[geoCoorddata['153'], geoCoorddata['153']]},{name:'153', value:5,toname:'155', coords:[geoCoorddata['153'], geoCoorddata['155']]},{name:'152', value:10,toname:'152', coords:[geoCoorddata['152'], geoCoorddata['152']]},{name:'155', value:7,toname:'173', coords:[geoCoorddata['155'], geoCoorddata['173']]},{name:'155', value:18,toname:'155', coords:[geoCoorddata['155'], geoCoorddata['155']]},{name:'155', value:16,toname:'149', coords:[geoCoorddata['155'], geoCoorddata['149']]},{name:'157', value:8,toname:'157', coords:[geoCoorddata['157'], geoCoorddata['157']]},{name:'156', value:5,toname:'191', coords:[geoCoorddata['156'], geoCoorddata['191']]},{name:'156', value:5,toname:'190', coords:[geoCoorddata['156'], geoCoorddata['190']]},{name:'156', value:7,toname:'178', coords:[geoCoorddata['156'], geoCoorddata['178']]},{name:'156', value:6,toname:'173', coords:[geoCoorddata['156'], geoCoorddata['173']]},{name:'156', value:6,toname:'186', coords:[geoCoorddata['156'], geoCoorddata['186']]},{name:'156', value:16,toname:'156', coords:[geoCoorddata['156'], geoCoorddata['156']]},{name:'156', value:5,toname:'149', coords:[geoCoorddata['156'], geoCoorddata['149']]},{name:'159', value:5,toname:'194', coords:[geoCoorddata['159'], geoCoorddata['194']]},{name:'159', value:7,toname:'159', coords:[geoCoorddata['159'], geoCoorddata['159']]},{name:'159', value:6,toname:'142', coords:[geoCoorddata['159'], geoCoorddata['142']]},{name:'158', value:5,toname:'158', coords:[geoCoorddata['158'], geoCoorddata['158']]},{name:'48', value:16,toname:'48', coords:[geoCoorddata['48'], geoCoorddata['48']]},{name:'46', value:9,toname:'46', coords:[geoCoorddata['46'], geoCoorddata['46']]},{name:'47', value:7,toname:'47', coords:[geoCoorddata['47'], geoCoorddata['47']]},{name:'44', value:6,toname:'58', coords:[geoCoorddata['44'], geoCoorddata['58']]},{name:'44', value:5,toname:'50', coords:[geoCoorddata['44'], geoCoorddata['50']]},{name:'44', value:11,toname:'44', coords:[geoCoorddata['44'], geoCoorddata['44']]},{name:'44', value:6,toname:'42', coords:[geoCoorddata['44'], geoCoorddata['42']]},{name:'45', value:6,toname:'45', coords:[geoCoorddata['45'], geoCoorddata['45']]},{name:'42', value:5,toname:'322', coords:[geoCoorddata['42'], geoCoorddata['322']]},{name:'42', value:6,toname:'53', coords:[geoCoorddata['42'], geoCoorddata['53']]},{name:'42', value:5,toname:'39', coords:[geoCoorddata['42'], geoCoorddata['39']]},{name:'42', value:6,toname:'169', coords:[geoCoorddata['42'], geoCoorddata['169']]},{name:'42', value:7,toname:'42', coords:[geoCoorddata['42'], geoCoorddata['42']]},{name:'43', value:6,toname:'58', coords:[geoCoorddata['43'], geoCoorddata['58']]},{name:'43', value:5,toname:'42', coords:[geoCoorddata['43'], geoCoorddata['42']]},{name:'43', value:10,toname:'43', coords:[geoCoorddata['43'], geoCoorddata['43']]},{name:'40', value:7,toname:'40', coords:[geoCoorddata['40'], geoCoorddata['40']]},{name:'41', value:8,toname:'58', coords:[geoCoorddata['41'], geoCoorddata['58']]},{name:'41', value:5,toname:'50', coords:[geoCoorddata['41'], geoCoorddata['50']]},{name:'41', value:5,toname:'169', coords:[geoCoorddata['41'], geoCoorddata['169']]},{name:'41', value:15,toname:'41', coords:[geoCoorddata['41'], geoCoorddata['41']]},{name:'5', value:6,toname:'8', coords:[geoCoorddata['5'], geoCoorddata['8']]},{name:'5', value:5,toname:'7', coords:[geoCoorddata['5'], geoCoorddata['7']]},{name:'5', value:5,toname:'39', coords:[geoCoorddata['5'], geoCoorddata['39']]},{name:'5', value:8,toname:'5', coords:[geoCoorddata['5'], geoCoorddata['5']]},{name:'5', value:7,toname:'9', coords:[geoCoorddata['5'], geoCoorddata['9']]},
+
+
+],
+
+              symbol: 'pin',
+           //线上面的动态特效
+             effect: {
+                  show: true,
+                  period: 4, //箭头指向速度，值越小速度越快
+                  trailLength: 0.5, //特效尾迹长度[0,1]值越大，尾迹越长重
+                  symbol: 'arrow', //箭头图标
+                  emphasis:true,
+                  symbolSize: 5, //图标大小
+              },
+
+           lineStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#58B3CC'
+                        }, {
+                            offset: 1,
+                            color: '#F58158'
+                        }], false),
+                        width: 1,
+                        opacity: 0.2,
+                        curveness: 0.1,
+                       
+                    }
+                },
+        },
+        
+        
+        ]
+    };
+myChart.setOption(option);       
+// 获取百度地图实例，使用百度地图自带的控件
+var bmap = myChart.getModel().getComponent('bmap').getBMap();
+bmap.addControl(new BMap.MapTypeControl());
+//调用百度的方法，使用bmap对象
+var point = new BMap.Point(120.13,33.38);//地图中心位置
+bmap.centerAndZoom(point, 15);
+</script>
+</body>
+</html>
