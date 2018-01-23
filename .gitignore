@@ -1,0 +1,20 @@
+##ignore this file##
+/bicycle/migrations
+/bicycle/static/uploads/
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# My configurations:
+db.ini
+deploy_key_rsa
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
